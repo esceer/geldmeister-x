@@ -17,9 +17,6 @@
   "settings": {
     "title": "Settings"
   },
-  "add": {
-    "title": "Add expense"
-  },
   "seed": {
     "bills": {
       "name": "Bills & Fixed",
@@ -50,6 +47,27 @@
     }
   },
   "common": {
-    "dbError": "Could not open the database: {{message}}"
+    "dbError": "Could not open the database: {{message}}",
+    "undo": "Undo",
+    "today": "Today",
+    "yesterday": "Yesterday"
+  },
+  "expense": {
+    "newTitle": "New expense",
+    "editTitle": "Edit expense",
+    "close": "Close",
+    "delete": "Delete expense",
+    "deleteDigit": "Delete digit",
+    "save": "Save expense",
+    "saveChanges": "Save changes",
+    "descriptionPlaceholder": "Description (optional)",
+    "addTag": "+ Tag",
+    "tagPlaceholder": "New tag",
+    "added": "{{currency}} · added {{date}}",
+    "deleted": "Expense deleted"
+  },
+  "dates": {
+    "dayMonth": "d MMM",
+    "weekdayDayMonth": "EEE, d MMM"
   }
 }

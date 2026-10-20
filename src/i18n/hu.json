@@ -17,9 +17,6 @@
   "settings": {
     "title": "Beállítások"
   },
-  "add": {
-    "title": "Új kiadás"
-  },
   "seed": {
     "bills": {
       "name": "Számlák és fix",
@@ -50,6 +47,27 @@
     }
   },
   "common": {
-    "dbError": "Nem sikerült megnyitni az adatbázist: {{message}}"
+    "dbError": "Nem sikerült megnyitni az adatbázist: {{message}}",
+    "undo": "Visszavonás",
+    "today": "Ma",
+    "yesterday": "Tegnap"
+  },
+  "expense": {
+    "newTitle": "Új kiadás",
+    "editTitle": "Kiadás szerkesztése",
+    "close": "Bezárás",
+    "delete": "Kiadás törlése",
+    "deleteDigit": "Számjegy törlése",
+    "save": "Kiadás mentése",
+    "saveChanges": "Módosítások mentése",
+    "descriptionPlaceholder": "Leírás (nem kötelező)",
+    "addTag": "+ Címke",
+    "tagPlaceholder": "Új címke",
+    "added": "{{currency}} · rögzítve: {{date}}",
+    "deleted": "Kiadás törölve"
+  },
+  "dates": {
+    "dayMonth": "MMM d.",
+    "weekdayDayMonth": "MMM d., EEE"
   }
 }

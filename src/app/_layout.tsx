@@ -12,8 +12,10 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { GlassBackground } from '@/components/ui/GlassBackground';
+import { Snackbar } from '@/components/ui/Snackbar';
 import { Text } from '@/components/ui/Text';
 import { useDatabase } from '@/db/useDatabase';
 import { colors } from '@/theme';
@@ -47,15 +49,19 @@ export default function RootLayout() {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.bg }}>
       <GlassBackground />
       <StatusBar style="light" />
       <Stack
         screenOptions={{ headerShown: false, contentStyle: { backgroundColor: 'transparent' } }}
       >
         <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="add" options={{ presentation: 'modal' }} />
+        <Stack.Screen
+          name="expense"
+          options={{ presentation: 'transparentModal', animation: 'fade' }}
+        />
       </Stack>
-    </View>
+      <Snackbar />
+    </GestureHandlerRootView>
   );
 }

@@ -63,8 +63,8 @@ export function TabBar({ blurTarget }: Props) {
       {tabs.slice(0, 2).map(renderTab)}
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={t('add.title')}
-        onPress={() => router.push('/add')}
+        accessibilityLabel={t('expense.newTitle')}
+        onPress={() => router.push('/expense')}
         style={styles.fab}
       >
         <Plus size={26} color={colors.onAccent} strokeWidth={2.4} />

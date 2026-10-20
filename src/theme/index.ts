@@ -15,7 +15,8 @@ export const colors = {
   positiveBg: 'rgba(61,220,197,0.16)',
   card: 'rgba(255,255,255,0.06)',
   cardBorder: 'rgba(255,255,255,0.12)',
-  sheet: 'rgba(28,30,48,0.62)',
+  // Design: rgba(28,30,48,0.62) + blur 40. Android can't blur across screens, so opaque.
+  sheet: '#161826',
   sheetBorder: 'rgba(255,255,255,0.16)',
   scrim: 'rgba(5,6,12,0.45)',
   nav: 'rgba(22,24,40,0.55)',
