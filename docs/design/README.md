@@ -43,4 +43,4 @@ Accepted design. Dark-first, iOS-like frosted glass. Live canvas (clickable): ht
 
 ## App icon
 
-Dark Midnight Glass background with the three color blobs; a ring split into the three category colors (the dashboard donut) around a bold Inter "G". Source: `icon/make-icons.js` renders every icon asset in `assets/` (adaptive foreground/background/monochrome, iOS icon, splash, favicon).
+Dark Midnight Glass background with the three color blobs; a dark glass coin edged with a ring in the three category colors (the dashboard donut), milled inside, with a bold Inter "G". Source: `icon/make-icons.js` renders every icon asset in `assets/` (adaptive foreground/background/monochrome, iOS icon, splash, favicon).
