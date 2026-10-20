@@ -1,8 +1,5 @@
-import { useTranslation } from 'react-i18next';
-
-import { Screen } from '@/components/ui/Screen';
+import { Dashboard } from '@/features/home/components/Dashboard';
 
 export default function HomeScreen() {
-  const { t } = useTranslation();
-  return <Screen title={t('home.title')} />;
+  return <Dashboard />;
 }

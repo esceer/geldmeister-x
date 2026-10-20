@@ -8,21 +8,34 @@ import Animated, { useAnimatedStyle, type SharedValue } from 'react-native-reani
 import { showSnackbar } from '@/components/ui/Snackbar';
 import { Text } from '@/components/ui/Text';
 import { CategoryIcon, tint } from '@/features/categories/icons';
+import { formatDate, fromDateKey, relativeDay } from '@/lib/dates';
 import { formatMoney } from '@/lib/money';
 import { colors } from '@/theme';
 
 import type { ExpenseListItem } from '../hooks';
 import { deleteExpense, restoreExpense } from '../queries';
 
-type Props = { item: ExpenseListItem; currency: string; decimals: number; divider: boolean };
+type Props = {
+  item: ExpenseListItem;
+  currency: string;
+  decimals: number;
+  divider: boolean;
+  showDay?: boolean; // adds "Today" / "19 Oct" to the subtitle (Home's recent list)
+};
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 /** Tap to edit, swipe left to delete (with undo). */
-export function ExpenseRow({ item, currency, decimals, divider }: Props) {
+export function ExpenseRow({ item, currency, decimals, divider, showDay }: Props) {
   const { t, i18n } = useTranslation();
   const title = item.tagNames ? capitalize(item.tagNames) : item.categoryName;
-  const subtitle = [item.categoryName, item.description].filter(Boolean).join(' · ');
+  const day = showDay ? relativeDay(item.date) : null;
+  const dayText = day
+    ? t(`common.${day}`)
+    : formatDate(fromDateKey(item.date), t('dates.dayMonth'), i18n.language);
+  const subtitle = [item.categoryName, showDay && dayText, item.description]
+    .filter(Boolean)
+    .join(' · ');
 
   const remove = () => {
     deleteExpense(item.id);

@@ -14,7 +14,7 @@ Personal expense tracker app. Users log daily spending (fuel, cinema, groceries,
 - Storage: local SQLite via `expo-sqlite` + Drizzle ORM (with migrations)
 - State: Zustand for UI/settings; DB reads via feature hooks
 - i18n: `i18next` + `react-i18next` + `expo-localization`; languages **English and Hungarian**. No hard-coded UI strings
-- Charts: `victory-native` (Skia)
+- Charts: plain SVG via `react-native-svg` (donut, bars); no chart library needed so far
 - Dates: `date-fns`
 - Glass effects: blur via `expo-blur` (verify performance on a real Android device)
 - UI component library: none chosen. Build a small set of custom components in `src/components/ui` from the design tokens

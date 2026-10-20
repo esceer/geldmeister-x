@@ -4,7 +4,7 @@ import { db } from '@/db/client';
 import { categories, expenses, expenseTags, recurring, tags } from '@/db/schema';
 import { useQuery } from '@/db/useQuery';
 
-const listQuery = (currency: string, categoryId: string | null) =>
+const listQuery = (currency: string, categoryId: string | null, limit = -1) =>
   db
     .select({
       id: expenses.id,
@@ -31,13 +31,14 @@ const listQuery = (currency: string, categoryId: string | null) =>
         categoryId ? eq(expenses.categoryId, categoryId) : undefined,
       ),
     )
-    .orderBy(desc(expenses.date), desc(expenses.createdAt));
+    .orderBy(desc(expenses.date), desc(expenses.createdAt))
+    .limit(limit); // -1: no limit
 
 export type ExpenseListItem = ReturnType<ReturnType<typeof listQuery>['all']>[number];
 
-export function useExpenseList(currency: string, categoryId: string | null) {
+export function useExpenseList(currency: string, categoryId: string | null, limit?: number) {
   return useQuery(
-    () => listQuery(currency, categoryId).all(),
+    () => listQuery(currency, categoryId, limit).all(),
     ['expenses', 'expense_tags', 'tags', 'categories', 'recurring'],
   );
 }

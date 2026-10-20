@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 
 import { CurrencyChip } from '@/components/CurrencyChip';
+import { Card } from '@/components/ui/Card';
 import { ScreenHeader, useScreenContentStyle } from '@/components/ui/Screen';
 import { Text } from '@/components/ui/Text';
 import { useCategories } from '@/features/categories/hooks';
@@ -99,7 +100,7 @@ export function ExpenseList() {
               {money(group.total)}
             </Text>
           </View>
-          <View style={styles.card}>
+          <Card>
             {group.items.map((item, index) => (
               <ExpenseRow
                 key={item.id}
@@ -109,7 +110,7 @@ export function ExpenseList() {
                 divider={index < group.items.length - 1}
               />
             ))}
-          </View>
+          </Card>
         </View>
       )}
     />
@@ -149,12 +150,5 @@ const styles = StyleSheet.create({
   filterSelected: { backgroundColor: colors.text, borderColor: colors.text },
   group: { gap: 8 },
   groupHeader: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 6 },
-  card: {
-    overflow: 'hidden',
-    borderRadius: 22,
-    borderWidth: 1,
-    borderColor: colors.cardBorder,
-    backgroundColor: colors.card,
-  },
   empty: { textAlign: 'center', paddingVertical: 40 },
 });

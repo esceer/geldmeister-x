@@ -6,7 +6,14 @@
     "settings": "Settings"
   },
   "home": {
-    "title": "Overview"
+    "title": "Overview",
+    "spentThisMonth": "Spent this month",
+    "vsMonth": "{{percent}}% vs {{month}}",
+    "ofBudget": "of {{amount}} budget",
+    "ofBudgetPercent": "{{percent}}% of budget",
+    "noExpensesMonth": "No expenses this month yet",
+    "recent": "Recent",
+    "seeAll": "See all"
   },
   "expenses": {
     "title": "Expenses",
@@ -72,7 +79,8 @@
   },
   "dates": {
     "dayMonth": "d MMM",
-    "weekdayDayMonth": "EEE, d MMM"
+    "weekdayDayMonth": "EEE, d MMM",
+    "monthYear": "LLLL yyyy"
   },
   "recurring": {
     "monthly": "Monthly",

@@ -6,7 +6,14 @@
     "settings": "Beállítások"
   },
   "home": {
-    "title": "Áttekintés"
+    "title": "Áttekintés",
+    "spentThisMonth": "Elköltve ebben a hónapban",
+    "vsMonth": "{{percent}}% vs. {{month}}",
+    "ofBudget": "{{amount}} keretből",
+    "ofBudgetPercent": "a keret {{percent}}%-a",
+    "noExpensesMonth": "Ebben a hónapban még nincs kiadás",
+    "recent": "Legutóbbiak",
+    "seeAll": "Összes"
   },
   "expenses": {
     "title": "Kiadások",
@@ -72,7 +79,8 @@
   },
   "dates": {
     "dayMonth": "MMM d.",
-    "weekdayDayMonth": "MMM d., EEE"
+    "weekdayDayMonth": "MMM d., EEE",
+    "monthYear": "yyyy. LLLL"
   },
   "recurring": {
     "monthly": "Havonta",
