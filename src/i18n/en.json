@@ -23,7 +23,27 @@
     "noResults": "No matching expenses"
   },
   "reports": {
-    "title": "Reports"
+    "title": "Reports",
+    "kinds": {
+      "week": "Week",
+      "month": "Month",
+      "quarter": "Quarter",
+      "year": "Year",
+      "custom": "Custom"
+    },
+    "previous": "Previous period",
+    "next": "Next period",
+    "from": "From",
+    "to": "To",
+    "totalSpent": "Total spent",
+    "lessThan": "{{amount}} less than {{period}}",
+    "moreThan": "{{amount}} more than {{period}}",
+    "sameAs": "Same as {{period}}",
+    "previousWeek": "last week",
+    "category": "Category",
+    "amount": "Amount",
+    "share": "Share",
+    "empty": "No expenses in this period"
   },
   "settings": {
     "title": "Settings"
@@ -80,7 +100,22 @@
   "dates": {
     "dayMonth": "d MMM",
     "weekdayDayMonth": "EEE, d MMM",
-    "monthYear": "LLLL yyyy"
+    "monthYear": "LLLL yyyy",
+    "dayMonthYear": "d MMM yyyy",
+    "range": {
+      "sameMonth": {
+        "from": "d",
+        "to": "d MMMM yyyy"
+      },
+      "sameYear": {
+        "from": "d MMM",
+        "to": "d MMM yyyy"
+      },
+      "otherYear": {
+        "from": "d MMM yyyy",
+        "to": "d MMM yyyy"
+      }
+    }
   },
   "recurring": {
     "monthly": "Monthly",

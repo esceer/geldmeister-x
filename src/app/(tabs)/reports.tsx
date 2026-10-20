@@ -1,8 +1,5 @@
-import { useTranslation } from 'react-i18next';
-
-import { Screen } from '@/components/ui/Screen';
+import { Reports } from '@/features/reports/components/Reports';
 
 export default function ReportsScreen() {
-  const { t } = useTranslation();
-  return <Screen title={t('reports.title')} />;
+  return <Reports />;
 }

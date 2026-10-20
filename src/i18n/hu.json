@@ -23,7 +23,27 @@
     "noResults": "Nincs találat"
   },
   "reports": {
-    "title": "Riportok"
+    "title": "Riportok",
+    "kinds": {
+      "week": "Hét",
+      "month": "Hónap",
+      "quarter": "Negyedév",
+      "year": "Év",
+      "custom": "Egyéni"
+    },
+    "previous": "Előző időszak",
+    "next": "Következő időszak",
+    "from": "Ettől",
+    "to": "Eddig",
+    "totalSpent": "Összes kiadás",
+    "lessThan": "{{amount}}-tal kevesebb, mint {{period}}",
+    "moreThan": "{{amount}}-tal több, mint {{period}}",
+    "sameAs": "Ugyanannyi, mint {{period}}",
+    "previousWeek": "múlt héten",
+    "category": "Kategória",
+    "amount": "Összeg",
+    "share": "Arány",
+    "empty": "Nincs kiadás ebben az időszakban"
   },
   "settings": {
     "title": "Beállítások"
@@ -80,7 +100,22 @@
   "dates": {
     "dayMonth": "MMM d.",
     "weekdayDayMonth": "MMM d., EEE",
-    "monthYear": "yyyy. LLLL"
+    "monthYear": "yyyy. LLLL",
+    "dayMonthYear": "yyyy. MMM d.",
+    "range": {
+      "sameMonth": {
+        "from": "yyyy. MMMM d.",
+        "to": "d."
+      },
+      "sameYear": {
+        "from": "yyyy. MMM d.",
+        "to": "MMM d."
+      },
+      "otherYear": {
+        "from": "yyyy. MMM d.",
+        "to": "yyyy. MMM d."
+      }
+    }
   },
   "recurring": {
     "monthly": "Havonta",
