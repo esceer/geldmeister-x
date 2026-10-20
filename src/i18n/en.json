@@ -48,7 +48,13 @@
   "settings": {
     "title": "Settings",
     "money": "Money",
-    "preferences": "Preferences"
+    "preferences": "Preferences",
+    "language": "Language",
+    "languages": {
+      "system": "System default",
+      "en": "English",
+      "hu": "Magyar"
+    }
   },
   "seed": {
     "bills": {
@@ -179,5 +185,26 @@
     "sheetTitle": "{{name}} budget",
     "perMonth": "per month",
     "remove": "Remove budget"
+  },
+  "currencies": {
+    "title": "Currencies",
+    "hint": "Each currency keeps its own expenses, budgets, recurring items and reports. Amounts are never converted.",
+    "inMonth": "{{amount}} in {{month}}",
+    "add": "Add currency",
+    "switch": "Switch currency, current {{code}}",
+    "names": {
+      "HUF": "Hungarian forint",
+      "EUR": "Euro",
+      "USD": "US dollar",
+      "GBP": "British pound",
+      "CHF": "Swiss franc",
+      "PLN": "Polish złoty",
+      "CZK": "Czech koruna",
+      "RON": "Romanian leu",
+      "SEK": "Swedish krona",
+      "NOK": "Norwegian krone",
+      "DKK": "Danish krone",
+      "JPY": "Japanese yen"
+    }
   }
 }

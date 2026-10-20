@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { PiggyBank, Repeat, Tags } from 'lucide-react-native';
+import { Coins, Languages, PiggyBank, Repeat, Tags } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 
@@ -8,22 +8,24 @@ import { Screen } from '@/components/ui/Screen';
 import { Text } from '@/components/ui/Text';
 import { useBudgets } from '@/features/budgets/hooks';
 import { useCategories } from '@/features/categories/hooks';
-import { useActiveCurrency } from '@/features/currencies/hooks';
+import { useActiveCurrency, useCurrencies } from '@/features/currencies/hooks';
 import { useRecurringList } from '@/features/recurring/hooks';
-import { useSettings } from '@/features/settings/store';
 import { formatMoney } from '@/lib/money';
 import { colors } from '@/theme';
 
+import { useSettings } from '../store';
 import { SettingsRow } from './SettingsRow';
 
-/** Settings hub (design: Settings.dc.html). */
+/** Settings hub (design: Settings.dc.html). The theme row waits for a light palette. */
 export function SettingsScreen() {
   const { t, i18n } = useTranslation();
-  const categories = useCategories();
   const currency = useSettings((s) => s.currency);
-  const recurringCount = useRecurringList(currency).length;
+  const language = useSettings((s) => s.language);
+  const currencies = useCurrencies();
+  const categories = useCategories();
   const decimals = useActiveCurrency()?.decimals ?? 0;
   const budgetTotal = [...useBudgets(currency).values()].reduce((sum, v) => sum + v, 0);
+  const recurringCount = useRecurringList(currency).length;
 
   return (
     <Screen title={t('settings.title')}>
@@ -31,6 +33,14 @@ export function SettingsScreen() {
         {t('settings.money')}
       </Text>
       <Card>
+        <SettingsRow
+          Icon={Coins}
+          color="#FFB547"
+          label={t('currencies.title')}
+          value={currencies.map((c) => c.code).join(', ')}
+          onPress={() => router.push('/currency')}
+          divider
+        />
         <SettingsRow
           Icon={Tags}
           color={colors.accent}
@@ -57,6 +67,19 @@ export function SettingsScreen() {
           label={t('recurring.title')}
           value={t('recurring.activeCount', { count: recurringCount })}
           onPress={() => router.push('/settings/recurring')}
+        />
+      </Card>
+
+      <Text size={12} weight="semibold" muted style={styles.section}>
+        {t('settings.preferences')}
+      </Text>
+      <Card>
+        <SettingsRow
+          Icon={Languages}
+          color={colors.text}
+          label={t('settings.language')}
+          value={t(`settings.languages.${language}`)}
+          onPress={() => router.push('/language')}
         />
       </Card>
     </Screen>

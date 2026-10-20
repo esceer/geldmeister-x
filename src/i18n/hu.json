@@ -48,7 +48,13 @@
   "settings": {
     "title": "Beállítások",
     "money": "Pénz",
-    "preferences": "Beállítások"
+    "preferences": "Beállítások",
+    "language": "Nyelv",
+    "languages": {
+      "system": "Rendszer alapértelmezett",
+      "en": "English",
+      "hu": "Magyar"
+    }
   },
   "seed": {
     "bills": {
@@ -179,5 +185,26 @@
     "sheetTitle": "{{name}} keret",
     "perMonth": "havonta",
     "remove": "Keret törlése"
+  },
+  "currencies": {
+    "title": "Pénznemek",
+    "hint": "Minden pénznemnek saját kiadásai, keretei, ismétlődő tételei és riportjai vannak. Az összegeket sosem váltjuk át.",
+    "inMonth": "{{amount}} – {{month}}",
+    "add": "Pénznem hozzáadása",
+    "switch": "Pénznem váltása, jelenleg {{code}}",
+    "names": {
+      "HUF": "Magyar forint",
+      "EUR": "Euró",
+      "USD": "Amerikai dollár",
+      "GBP": "Angol font",
+      "CHF": "Svájci frank",
+      "PLN": "Lengyel złoty",
+      "CZK": "Cseh korona",
+      "RON": "Román lej",
+      "SEK": "Svéd korona",
+      "NOK": "Norvég korona",
+      "DKK": "Dán korona",
+      "JPY": "Japán jen"
+    }
   }
 }

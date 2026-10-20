@@ -61,9 +61,11 @@ export default function RootLayout() {
           screenOptions={{ headerShown: false, contentStyle: { backgroundColor: 'transparent' } }}
         >
           <Stack.Screen name="(tabs)" />
-          {['expense', 'category', 'tag', 'recurring', 'budget'].map((name) => (
-            <Stack.Screen key={name} name={name} options={sheetOptions} />
-          ))}
+          {['expense', 'category', 'tag', 'recurring', 'budget', 'currency', 'language'].map(
+            (name) => (
+              <Stack.Screen key={name} name={name} options={sheetOptions} />
+            ),
+          )}
         </Stack>
         <Snackbar />
       </KeyboardProvider>
