@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Midnight Glass — Add expense</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:#FFFFFF}
+input::placeholder{color:rgba(235,237,250,0.6)}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #0B0D17; font-family: Inter, system-ui, sans-serif; color: #F4F5FA">
+  <div aria-hidden="true" style="position: absolute; width: 280px; height: 280px; left: -80px; top: -40px; border-radius: 50%; background: #5B4BFF; filter: blur(90px); opacity: 0.55"></div>
+  <div aria-hidden="true" style="position: absolute; width: 240px; height: 240px; right: -90px; top: 300px; border-radius: 50%; background: #0FB5A0; filter: blur(90px); opacity: 0.45"></div>
+  <div aria-hidden="true" style="position: absolute; width: 220px; height: 220px; left: 40px; bottom: -60px; border-radius: 50%; background: #E0458B; filter: blur(100px); opacity: 0.4"></div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(5,6,12,0.45)"></div>
+
+  <section aria-label="New expense" style="position: absolute; left: 0; right: 0; top: 44px; bottom: 0; box-sizing: border-box; padding: 10px 20px 28px; display: flex; flex-direction: column; gap: 14px; border-radius: 32px 32px 0 0; background: rgba(28,30,48,0.62); border-top: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%)">
+    <div aria-hidden="true" style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.3)"></div>
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <a href="Main.dc.html" aria-label="Close" style="width: 40px; height: 40px; border-radius: 20px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></a>
+      <h1 style="margin: 0; font-size: 17px; font-weight: 600">New expense</h1>
+      <button type="button" aria-label="Currency HUF" style="height: 40px; padding: 0 14px; border-radius: 20px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); color: #F4F5FA; font: 600 14px Inter, sans-serif">HUF</button>
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: baseline; gap: 8px; padding: 6px 0">
+      <span style="font-size: 52px; font-weight: 700; letter-spacing: -0.03em">18 450</span>
+      <span style="font-size: 22px; font-weight: 600; color: rgba(235,237,250,0.64)">Ft</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <button type="button" style="height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #F4F5FA; font: 500 13px Inter, sans-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8E9BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><path d="M9 8h6M9 12h6"></path></svg>Bills</button>
+      <button type="button" aria-pressed="true" style="height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 14px; background: rgba(61,220,197,0.2); border: 1px solid #3DDCC5; color: #F4F5FA; font: 600 13px Inter, sans-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3DDCC5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13l2-6h14l2 6v4h-2.5M5.5 17H3v-4h18"></path><circle cx="7.5" cy="17" r="1.8"></circle><circle cx="16.5" cy="17" r="1.8"></circle></svg>Transport</button>
+      <button type="button" style="height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #F4F5FA; font: 500 13px Inter, sans-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>Misc</button>
+    </div>
+
+    <div style="display: flex; gap: 8px; flex-wrap: wrap">
+      <button type="button" aria-pressed="true" style="height: 32px; padding: 0 12px; border-radius: 16px; background: #3DDCC5; border: 0; color: #08201C; font: 600 13px Inter, sans-serif"># fuel</button>
+      <button type="button" style="height: 32px; padding: 0 12px; border-radius: 16px; background: rgba(255,255,255,0.08); border: 0; color: #F4F5FA; font: 500 13px Inter, sans-serif"># parking</button>
+      <button type="button" style="height: 32px; padding: 0 12px; border-radius: 16px; background: rgba(255,255,255,0.08); border: 0; color: #F4F5FA; font: 500 13px Inter, sans-serif"># service</button>
+      <button type="button" style="height: 32px; padding: 0 12px; border-radius: 16px; background: rgba(255,255,255,0.08); border: 0; color: #F4F5FA; font: 500 13px Inter, sans-serif"># tolls</button>
+      <button type="button" style="height: 32px; padding: 0 12px; border-radius: 16px; background: none; border: 1px dashed rgba(255,255,255,0.3); color: rgba(235,237,250,0.75); font: 500 13px Inter, sans-serif">+ Tag</button>
+    </div>
+
+    <div style="display: flex; gap: 8px">
+      <button type="button" style="height: 44px; padding: 0 14px; display: flex; align-items: center; gap: 8px; border-radius: 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #F4F5FA; font: 500 13px Inter, sans-serif; white-space: nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>Today, 20 Oct</button>
+      <label style="flex: 1; display: flex; align-items: center; height: 44px; padding: 0 14px; border-radius: 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12)">
+        <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Description</span>
+        <input type="text" placeholder="Description (optional)" style="width: 100%; background: none; border: 0; outline: none; color: #F4F5FA; font: 400 13px Inter, sans-serif">
+      </label>
+    </div>
+
+    <div style="flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">1</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">2</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">3</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">4</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">5</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">6</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">7</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">8</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">9</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">,</button>
+      <button type="button" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; font: 500 24px Inter, sans-serif">0</button>
+      <button type="button" aria-label="Delete digit" style="border-radius: 16px; background: rgba(255,255,255,0.05); border: 0; color: #F4F5FA; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 5H9l-6 7 6 7h12z"></path><path d="m12 9 6 6M18 9l-6 6"></path></svg></button>
+    </div>
+
+    <a href="Main.dc.html" style="height: 56px; flex-shrink: 0; border-radius: 28px; background: #8E9BFF; color: #0B0D17; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">Save expense</a>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
