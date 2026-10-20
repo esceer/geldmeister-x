@@ -5,9 +5,51 @@
     "reports": "Reports",
     "settings": "Settings"
   },
-  "home": { "title": "Overview" },
-  "expenses": { "title": "Expenses" },
-  "reports": { "title": "Reports" },
-  "settings": { "title": "Settings" },
-  "add": { "title": "Add expense" }
+  "home": {
+    "title": "Overview"
+  },
+  "expenses": {
+    "title": "Expenses"
+  },
+  "reports": {
+    "title": "Reports"
+  },
+  "settings": {
+    "title": "Settings"
+  },
+  "add": {
+    "title": "Add expense"
+  },
+  "seed": {
+    "bills": {
+      "name": "Bills & Fixed",
+      "tags": {
+        "loan": "loan",
+        "utilities": "utilities",
+        "insurance": "insurance",
+        "internet": "internet",
+        "streaming": "streaming"
+      }
+    },
+    "transport": {
+      "name": "Transport",
+      "tags": {
+        "fuel": "fuel",
+        "service": "service",
+        "parking": "parking",
+        "tolls": "tolls"
+      }
+    },
+    "misc": {
+      "name": "Misc",
+      "tags": {
+        "groceries": "groceries",
+        "dining": "dining",
+        "cinema": "cinema"
+      }
+    }
+  },
+  "common": {
+    "dbError": "Could not open the database: {{message}}"
+  }
 }

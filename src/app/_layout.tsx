@@ -10,9 +10,12 @@ import {
 import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { GlassBackground } from '@/components/ui/GlassBackground';
+import { Text } from '@/components/ui/Text';
+import { useDatabase } from '@/db/useDatabase';
 import { colors } from '@/theme';
 
 SplashScreen.preventAutoHideAsync();
@@ -25,11 +28,23 @@ export default function RootLayout() {
     Inter_700Bold,
   });
 
-  useEffect(() => {
-    if (fontsLoaded) SplashScreen.hideAsync();
-  }, [fontsLoaded]);
+  const db = useDatabase();
+  const { t } = useTranslation();
+  const ready = fontsLoaded && (db.ready || db.error);
 
-  if (!fontsLoaded) return null;
+  useEffect(() => {
+    if (ready) SplashScreen.hideAsync();
+  }, [ready]);
+
+  if (!ready) return null;
+
+  if (db.error) {
+    return (
+      <View style={{ flex: 1, backgroundColor: colors.bg, justifyContent: 'center', padding: 20 }}>
+        <Text>{t('common.dbError', { message: db.error.message })}</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>

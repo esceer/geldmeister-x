@@ -7,6 +7,6 @@ module.exports = defineConfig([
   expoConfig,
   prettierConfig,
   {
-    ignores: ['dist/*', 'drizzle/*'],
+    ignores: ['dist/*', 'src/db/migrations/*'],
   },
 ]);

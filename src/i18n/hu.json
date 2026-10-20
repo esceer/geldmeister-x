@@ -5,9 +5,51 @@
     "reports": "Riportok",
     "settings": "Beállítások"
   },
-  "home": { "title": "Áttekintés" },
-  "expenses": { "title": "Kiadások" },
-  "reports": { "title": "Riportok" },
-  "settings": { "title": "Beállítások" },
-  "add": { "title": "Új kiadás" }
+  "home": {
+    "title": "Áttekintés"
+  },
+  "expenses": {
+    "title": "Kiadások"
+  },
+  "reports": {
+    "title": "Riportok"
+  },
+  "settings": {
+    "title": "Beállítások"
+  },
+  "add": {
+    "title": "Új kiadás"
+  },
+  "seed": {
+    "bills": {
+      "name": "Számlák és fix",
+      "tags": {
+        "loan": "hitel",
+        "utilities": "rezsi",
+        "insurance": "biztosítás",
+        "internet": "internet",
+        "streaming": "streaming"
+      }
+    },
+    "transport": {
+      "name": "Közlekedés",
+      "tags": {
+        "fuel": "üzemanyag",
+        "service": "szerviz",
+        "parking": "parkolás",
+        "tolls": "útdíj"
+      }
+    },
+    "misc": {
+      "name": "Egyéb",
+      "tags": {
+        "groceries": "élelmiszer",
+        "dining": "étterem",
+        "cinema": "mozi"
+      }
+    }
+  },
+  "common": {
+    "dbError": "Nem sikerült megnyitni az adatbázist: {{message}}"
+  }
 }

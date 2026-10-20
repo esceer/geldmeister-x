@@ -24,6 +24,8 @@ Personal expense tracker app. Users log daily spending (fuel, cinema, groceries,
 - Requires Node.js LTS and Android Studio (Android SDK + emulator); an Android phone with USB debugging is optional
 - Dev build (needed because of native modules; Expo Go is not enough): `npx expo run:android`. Rebuild after adding native libraries
 - Daily: `npx expo start` (fast refresh against the installed dev build)
+- Schema change: edit `src/db/schema.ts`, then `npm run db:generate` (migrations run on app start). Insert rows with `id: newId()` from `src/lib/id.ts`
+- Checks: `npm run typecheck` and `npm run lint`
 - Release builds: EAS (`eas build -p android`) or local Gradle
 
 ## Domain rules
