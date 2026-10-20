@@ -121,8 +121,25 @@
     }
   },
   "recurring": {
+    "title": "Ismétlődő kiadások",
+    "newTitle": "Új ismétlődő kiadás",
+    "editTitle": "Ismétlődő kiadás szerkesztése",
+    "delete": "Ismétlődő kiadás törlése",
+    "deleted": "Ismétlődő kiadás törölve",
     "monthly": "Havonta",
-    "yearly": "Évente"
+    "yearly": "Évente",
+    "monthlyOn": "Havonta, {{day}}",
+    "yearlyOn": "Évente, {{date}}",
+    "starts": "Kezdés: {{date}}",
+    "fixedMonthly": "Havi fix",
+    "plusYearly": "+ {{amount}} évente",
+    "hint": "Az esedékesség napján automatikusan rögzül. A kimaradtak a következő megnyitáskor kerülnek be.",
+    "empty": "Még nincs ismétlődő kiadás. Koppints a + gombra.",
+    "tomorrow": "Holnap",
+    "inDays_one": "{{count}} nap múlva",
+    "inDays_other": "{{count}} nap múlva",
+    "activeCount_one": "{{count}} aktív",
+    "activeCount_other": "{{count}} aktív"
   },
   "tags": {
     "add": "+ Címke",

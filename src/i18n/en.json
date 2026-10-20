@@ -121,8 +121,25 @@
     }
   },
   "recurring": {
+    "title": "Recurring expenses",
+    "newTitle": "New recurring expense",
+    "editTitle": "Edit recurring expense",
+    "delete": "Delete recurring expense",
+    "deleted": "Recurring expense deleted",
     "monthly": "Monthly",
-    "yearly": "Yearly"
+    "yearly": "Yearly",
+    "monthlyOn": "Monthly on the {{day}}",
+    "yearlyOn": "Yearly on {{date}}",
+    "starts": "Starts {{date}}",
+    "fixedMonthly": "Fixed each month",
+    "plusYearly": "+ {{amount}} yearly",
+    "hint": "Added automatically on the due date. Missed ones are added the next time you open the app.",
+    "empty": "No recurring expenses yet. Tap + to add one.",
+    "tomorrow": "Tomorrow",
+    "inDays_one": "in {{count}} day",
+    "inDays_other": "in {{count}} days",
+    "activeCount_one": "{{count}} active",
+    "activeCount_other": "{{count}} active"
   },
   "tags": {
     "add": "+ Tag",
