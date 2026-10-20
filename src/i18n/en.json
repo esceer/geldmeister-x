@@ -1,0 +1,13 @@
+{
+  "tabs": {
+    "home": "Home",
+    "expenses": "Expenses",
+    "reports": "Reports",
+    "settings": "Settings"
+  },
+  "home": { "title": "Overview" },
+  "expenses": { "title": "Expenses" },
+  "reports": { "title": "Reports" },
+  "settings": { "title": "Settings" },
+  "add": { "title": "Add expense" }
+}

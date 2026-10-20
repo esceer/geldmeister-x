@@ -62,8 +62,8 @@ Personal expense tracker app. Users log daily spending (fuel, cinema, groceries,
 ## Code structure (target)
 
 ```
-app/                    # Expo Router routes; screens stay thin
-src/
+src/                    # imported as @/…
+  app/                  # Expo Router routes; screens stay thin
   features/<feature>/   # components, hooks, queries per feature
   db/                   # Drizzle schema, migrations, seed data
   components/ui/        # shared design-system components

@@ -1,0 +1,13 @@
+{
+  "tabs": {
+    "home": "Kezdőlap",
+    "expenses": "Kiadások",
+    "reports": "Riportok",
+    "settings": "Beállítások"
+  },
+  "home": { "title": "Áttekintés" },
+  "expenses": { "title": "Kiadások" },
+  "reports": { "title": "Riportok" },
+  "settings": { "title": "Beállítások" },
+  "add": { "title": "Új kiadás" }
+}

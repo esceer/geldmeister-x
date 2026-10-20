@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Geldmeister X",
+    "slug": "geldmeister-x",
+    "version": "1.0.0",
+    "scheme": "geldmeisterx",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B0D17",
+    "ios": {
+      "bundleIdentifier": "com.esceer.geldmeisterx",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.esceer.geldmeisterx",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B0D17",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-localization",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160,
+          "backgroundColor": "#0B0D17"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
