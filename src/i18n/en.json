@@ -9,7 +9,11 @@
     "title": "Overview"
   },
   "expenses": {
-    "title": "Expenses"
+    "title": "Expenses",
+    "all": "All",
+    "searchPlaceholder": "Search tags or descriptions",
+    "empty": "No expenses yet. Tap + to add one.",
+    "noResults": "No matching expenses"
   },
   "reports": {
     "title": "Reports"
@@ -69,5 +73,9 @@
   "dates": {
     "dayMonth": "d MMM",
     "weekdayDayMonth": "EEE, d MMM"
+  },
+  "recurring": {
+    "monthly": "Monthly",
+    "yearly": "Yearly"
   }
 }

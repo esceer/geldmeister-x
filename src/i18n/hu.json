@@ -9,7 +9,11 @@
     "title": "Áttekintés"
   },
   "expenses": {
-    "title": "Kiadások"
+    "title": "Kiadások",
+    "all": "Összes",
+    "searchPlaceholder": "Keresés címkékben, leírásokban",
+    "empty": "Még nincs kiadás. Koppints a + gombra.",
+    "noResults": "Nincs találat"
   },
   "reports": {
     "title": "Riportok"
@@ -69,5 +73,9 @@
   "dates": {
     "dayMonth": "MMM d.",
     "weekdayDayMonth": "MMM d., EEE"
+  },
+  "recurring": {
+    "monthly": "Havonta",
+    "yearly": "Évente"
   }
 }

@@ -10,13 +10,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { showSnackbar } from '@/components/ui/Snackbar';
 import { Text } from '@/components/ui/Text';
 import { createTag, useCategories, useTags } from '@/features/categories/hooks';
-import { categoryIcon, tint } from '@/features/categories/icons';
+import { CategoryIcon, tint } from '@/features/categories/icons';
 import { getCurrency } from '@/features/currencies/hooks';
 import { useSettings } from '@/features/settings/store';
-import { formatDate, fromDateKey, relativeDay, toDateKey } from '@/lib/dates';
+import { formatDate, fromDateKey, toDateKey } from '@/lib/dates';
 import { applyKey, currencySymbol, formatInput, inputToMinor, minorToInput } from '@/lib/money';
 import { colors, fonts, radius } from '@/theme';
 
+import { dayLabel } from '../dayLabel';
 import { deleteExpense, getExpense, restoreExpense, saveExpense } from '../queries';
 import { Keypad } from './Keypad';
 
@@ -97,11 +98,6 @@ export function ExpenseSheet({ expenseId }: Props) {
     });
   };
 
-  const day = relativeDay(date);
-  const dateLabel = day
-    ? `${t(`common.${day}`)}, ${formatDate(fromDateKey(date), t('dates.dayMonth'), i18n.language)}`
-    : formatDate(fromDateKey(date), t('dates.weekdayDayMonth'), i18n.language);
-
   return (
     <View style={styles.root}>
       <Pressable
@@ -171,7 +167,6 @@ export function ExpenseSheet({ expenseId }: Props) {
         <View style={styles.categories}>
           {categories.map((category) => {
             const selected = category.id === selectedCategoryId;
-            const Icon = categoryIcon(category.icon);
             return (
               <Pressable
                 key={category.id}
@@ -185,7 +180,12 @@ export function ExpenseSheet({ expenseId }: Props) {
                   },
                 ]}
               >
-                <Icon size={16} color={category.color} strokeWidth={1.8} />
+                <CategoryIcon
+                  icon={category.icon}
+                  size={16}
+                  color={category.color}
+                  strokeWidth={1.8}
+                />
                 <Text size={13} weight={selected ? 'semibold' : 'medium'} numberOfLines={1}>
                   {category.name}
                 </Text>
@@ -238,7 +238,7 @@ export function ExpenseSheet({ expenseId }: Props) {
           <Pressable onPress={() => setShowDatePicker(true)} style={styles.field}>
             <CalendarDays size={16} color={colors.text} strokeWidth={1.8} />
             <Text size={13} weight="medium">
-              {dateLabel}
+              {dayLabel(date, ', ', t, i18n.language)}
             </Text>
           </Pressable>
           <TextInput
