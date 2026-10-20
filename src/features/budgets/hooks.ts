@@ -19,3 +19,14 @@ export function useBudgets(currency: string): Map<string, number> {
     ['budgets'],
   );
 }
+
+/** Total budget and the spending it covers (categories without a budget don't count). */
+export function budgetProgress(budgets: Map<string, number>, spentByCategory: Map<string, number>) {
+  let budget = 0;
+  let spent = 0;
+  for (const [categoryId, amount] of budgets) {
+    budget += amount;
+    spent += spentByCategory.get(categoryId) ?? 0;
+  }
+  return { budget, spent };
+}

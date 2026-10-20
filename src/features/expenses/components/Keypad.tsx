@@ -13,13 +13,14 @@ const rows: KeypadKey[][] = [
   ['.', '0', 'back'],
 ];
 
-type Props = { decimals: number; onKey: (key: KeypadKey) => void };
+// Fills the remaining height unless `height` is given (sheets that size to their content).
+type Props = { decimals: number; onKey: (key: KeypadKey) => void; height?: number };
 
-export function Keypad({ decimals, onKey }: Props) {
+export function Keypad({ decimals, onKey, height }: Props) {
   const { t, i18n } = useTranslation();
 
   return (
-    <View style={styles.grid}>
+    <View style={[styles.grid, height !== undefined && { flex: 0, height }]}>
       {rows.map((row, i) => (
         <View key={i} style={styles.row}>
           {row.map((key) => {

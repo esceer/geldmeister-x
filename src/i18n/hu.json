@@ -162,5 +162,22 @@
     "archive": "Archiválás",
     "archiveTitle": "Archiválod: {{name}}?",
     "archiveMessage": "Eltűnik a választókból, a kerete és az ismétlődő kiadásai leállnak. A korábbi kiadások megtartják, így a riportok pontosak maradnak."
+  },
+  "budgets": {
+    "title": "Havi keretek",
+    "daysLeft_one": "{{count}} nap van hátra",
+    "daysLeft_other": "{{count}} nap van hátra",
+    "left": "maradt",
+    "over": "túllépés",
+    "spentOf": "{{spent}} / {{budget}} elköltve",
+    "none": "Nincs keret",
+    "set": "Keret megadása",
+    "amountLeft": "{{amount}} maradt",
+    "amountOver": "{{amount}} túllépés",
+    "edit": "{{name}} keret szerkesztése",
+    "hint": "A keretek pénznemenként érvényesek, és minden hónapban ismétlődnek. A keret nélküli kategóriákat itt nem követjük.",
+    "sheetTitle": "{{name}} keret",
+    "perMonth": "havonta",
+    "remove": "Keret törlése"
   }
 }

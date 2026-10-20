@@ -13,6 +13,7 @@ type Props = {
   previousTotal: number;
   previousMonth: string;
   budget: number;
+  budgetSpent: number; // spending in budgeted categories
   currency: string;
   decimals: number;
 };
@@ -23,6 +24,7 @@ export function TotalCard({
   previousTotal,
   previousMonth,
   budget,
+  budgetSpent,
   currency,
   decimals,
 }: Props) {
@@ -76,9 +78,9 @@ export function TotalCard({
       ) : null}
       {budget > 0 ? (
         <ProgressBar
-          value={total / budget}
+          value={budgetSpent / budget}
           height={6}
-          color={total > budget ? colors.danger : colors.text}
+          color={budgetSpent > budget ? colors.danger : colors.text}
         />
       ) : null}
     </Card>

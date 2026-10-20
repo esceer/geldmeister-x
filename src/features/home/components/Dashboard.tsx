@@ -8,7 +8,7 @@ import { CurrencyChip } from '@/components/CurrencyChip';
 import { Card } from '@/components/ui/Card';
 import { Screen } from '@/components/ui/Screen';
 import { Text } from '@/components/ui/Text';
-import { useBudgets } from '@/features/budgets/hooks';
+import { budgetProgress, useBudgets } from '@/features/budgets/hooks';
 import { useCategories } from '@/features/categories/hooks';
 import { useActiveCurrency } from '@/features/currencies/hooks';
 import { ExpenseRow } from '@/features/expenses/components/ExpenseRow';
@@ -35,7 +35,7 @@ export function Dashboard() {
   const recent = useExpenseList(currency, null, RECENT_COUNT);
 
   const total = [...byCategory.values()].reduce((sum, v) => sum + v, 0);
-  const budgetTotal = [...budgets.values()].reduce((sum, v) => sum + v, 0);
+  const progress = budgetProgress(budgets, byCategory);
 
   return (
     <Screen
@@ -47,7 +47,8 @@ export function Dashboard() {
         total={total}
         previousTotal={previousTotal}
         previousMonth={formatDate(subMonths(month, 1), 'LLL', i18n.language)}
-        budget={budgetTotal}
+        budget={progress.budget}
+        budgetSpent={progress.spent}
         currency={currency}
         decimals={decimals}
       />

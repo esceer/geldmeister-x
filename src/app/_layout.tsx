@@ -61,7 +61,7 @@ export default function RootLayout() {
           screenOptions={{ headerShown: false, contentStyle: { backgroundColor: 'transparent' } }}
         >
           <Stack.Screen name="(tabs)" />
-          {['expense', 'category', 'tag', 'recurring'].map((name) => (
+          {['expense', 'category', 'tag', 'recurring', 'budget'].map((name) => (
             <Stack.Screen key={name} name={name} options={sheetOptions} />
           ))}
         </Stack>

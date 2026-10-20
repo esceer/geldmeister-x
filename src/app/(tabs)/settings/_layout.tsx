@@ -7,6 +7,7 @@ export default function SettingsLayout() {
       <Stack.Screen name="index" />
       <Stack.Screen name="categories" />
       <Stack.Screen name="recurring" />
+      <Stack.Screen name="budgets" />
     </Stack>
   );
 }

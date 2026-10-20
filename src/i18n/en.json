@@ -162,5 +162,22 @@
     "archive": "Archive",
     "archiveTitle": "Archive {{name}}?",
     "archiveMessage": "It disappears from pickers, and its budgets and recurring expenses stop. Past expenses keep it, so reports stay accurate."
+  },
+  "budgets": {
+    "title": "Monthly budgets",
+    "daysLeft_one": "{{count}} day left",
+    "daysLeft_other": "{{count}} days left",
+    "left": "left",
+    "over": "over",
+    "spentOf": "{{spent}} of {{budget}} spent",
+    "none": "No budget",
+    "set": "Set budget",
+    "amountLeft": "{{amount}} left",
+    "amountOver": "{{amount}} over",
+    "edit": "Edit {{name}} budget",
+    "hint": "Budgets are set per currency and repeat every month. A category without a budget is simply not tracked here.",
+    "sheetTitle": "{{name}} budget",
+    "perMonth": "per month",
+    "remove": "Remove budget"
   }
 }
