@@ -46,7 +46,9 @@
     "empty": "No expenses in this period"
   },
   "settings": {
-    "title": "Settings"
+    "title": "Settings",
+    "money": "Money",
+    "preferences": "Preferences"
   },
   "seed": {
     "bills": {
@@ -81,19 +83,20 @@
     "dbError": "Could not open the database: {{message}}",
     "undo": "Undo",
     "today": "Today",
-    "yesterday": "Yesterday"
+    "yesterday": "Yesterday",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back"
   },
   "expense": {
     "newTitle": "New expense",
     "editTitle": "Edit expense",
-    "close": "Close",
     "delete": "Delete expense",
     "deleteDigit": "Delete digit",
     "save": "Save expense",
     "saveChanges": "Save changes",
     "descriptionPlaceholder": "Description (optional)",
-    "addTag": "+ Tag",
-    "tagPlaceholder": "New tag",
     "added": "{{currency}} · added {{date}}",
     "deleted": "Expense deleted"
   },
@@ -120,5 +123,27 @@
   "recurring": {
     "monthly": "Monthly",
     "yearly": "Yearly"
+  },
+  "tags": {
+    "add": "+ Tag",
+    "placeholder": "New tag",
+    "editTitle": "Edit tag",
+    "delete": "Delete tag",
+    "deleted": "Tag deleted"
+  },
+  "categories": {
+    "title": "Categories & tags",
+    "new": "New category",
+    "hint": "Shared across all currencies. Drag to reorder. Tags belong to their category.",
+    "reorder": "Drag to reorder",
+    "edit": "Edit {{name}}",
+    "tagCount_one": "{{count}} tag",
+    "tagCount_other": "{{count}} tags",
+    "newTitle": "New category",
+    "editTitle": "Edit category",
+    "namePlaceholder": "Category name",
+    "archive": "Archive",
+    "archiveTitle": "Archive {{name}}?",
+    "archiveMessage": "It disappears from pickers, and its budgets and recurring expenses stop. Past expenses keep it, so reports stay accurate."
   }
 }

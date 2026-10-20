@@ -1,9 +1,13 @@
+import { router } from 'expo-router';
+import { ChevronLeft } from 'lucide-react-native';
 import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { spacing } from '@/theme';
 
+import { IconButton } from './IconButton';
 import { Text } from './Text';
 
 // Space kept free at the bottom so content can scroll above the floating nav pill.
@@ -18,9 +22,23 @@ export function useScreenContentStyle() {
   ];
 }
 
-type HeaderProps = { title: string; subtitle?: string; right?: ReactNode };
+type HeaderProps = { title: string; subtitle?: string; right?: ReactNode; back?: boolean };
 
-export function ScreenHeader({ title, subtitle, right }: HeaderProps) {
+export function ScreenHeader({ title, subtitle, right, back }: HeaderProps) {
+  const { t } = useTranslation();
+
+  if (back) {
+    return (
+      <View style={styles.header}>
+        <IconButton Icon={ChevronLeft} label={t('common.back')} onPress={() => router.back()} />
+        <Text size={17} weight="semibold" numberOfLines={1} style={styles.subTitle}>
+          {title}
+        </Text>
+        {right}
+      </View>
+    );
+  }
+
   return (
     <View style={styles.header}>
       <View style={styles.titles}>
@@ -52,4 +70,5 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   titles: { gap: 2 },
   title: { letterSpacing: -0.56 },
+  subTitle: { flex: 1, marginLeft: 12 },
 });

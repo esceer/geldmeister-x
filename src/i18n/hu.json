@@ -46,7 +46,9 @@
     "empty": "Nincs kiadás ebben az időszakban"
   },
   "settings": {
-    "title": "Beállítások"
+    "title": "Beállítások",
+    "money": "Pénz",
+    "preferences": "Beállítások"
   },
   "seed": {
     "bills": {
@@ -81,19 +83,20 @@
     "dbError": "Nem sikerült megnyitni az adatbázist: {{message}}",
     "undo": "Visszavonás",
     "today": "Ma",
-    "yesterday": "Tegnap"
+    "yesterday": "Tegnap",
+    "close": "Bezárás",
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "back": "Vissza"
   },
   "expense": {
     "newTitle": "Új kiadás",
     "editTitle": "Kiadás szerkesztése",
-    "close": "Bezárás",
     "delete": "Kiadás törlése",
     "deleteDigit": "Számjegy törlése",
     "save": "Kiadás mentése",
     "saveChanges": "Módosítások mentése",
     "descriptionPlaceholder": "Leírás (nem kötelező)",
-    "addTag": "+ Címke",
-    "tagPlaceholder": "Új címke",
     "added": "{{currency}} · rögzítve: {{date}}",
     "deleted": "Kiadás törölve"
   },
@@ -120,5 +123,27 @@
   "recurring": {
     "monthly": "Havonta",
     "yearly": "Évente"
+  },
+  "tags": {
+    "add": "+ Címke",
+    "placeholder": "Új címke",
+    "editTitle": "Címke szerkesztése",
+    "delete": "Címke törlése",
+    "deleted": "Címke törölve"
+  },
+  "categories": {
+    "title": "Kategóriák és címkék",
+    "new": "Új kategória",
+    "hint": "Minden pénznemben közösek. Húzd az átrendezéshez. A címkék a kategóriájukhoz tartoznak.",
+    "reorder": "Húzd az átrendezéshez",
+    "edit": "{{name}} szerkesztése",
+    "tagCount_one": "{{count}} címke",
+    "tagCount_other": "{{count}} címke",
+    "newTitle": "Új kategória",
+    "editTitle": "Kategória szerkesztése",
+    "namePlaceholder": "Kategória neve",
+    "archive": "Archiválás",
+    "archiveTitle": "Archiválod: {{name}}?",
+    "archiveMessage": "Eltűnik a választókból, a kerete és az ismétlődő kiadásai leállnak. A korábbi kiadások megtartják, így a riportok pontosak maradnak."
   }
 }

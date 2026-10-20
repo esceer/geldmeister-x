@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 import { GlassBackground } from '@/components/ui/GlassBackground';
 import { Snackbar } from '@/components/ui/Snackbar';
@@ -21,6 +22,9 @@ import { useDatabase } from '@/db/useDatabase';
 import { colors } from '@/theme';
 
 SplashScreen.preventAutoHideAsync();
+
+// Sheets are transparent modals; the sheet itself animates in.
+const sheetOptions = { presentation: 'transparentModal', animation: 'fade' } as const;
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -50,18 +54,19 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.bg }}>
-      <GlassBackground />
-      <StatusBar style="light" />
-      <Stack
-        screenOptions={{ headerShown: false, contentStyle: { backgroundColor: 'transparent' } }}
-      >
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen
-          name="expense"
-          options={{ presentation: 'transparentModal', animation: 'fade' }}
-        />
-      </Stack>
-      <Snackbar />
+      <KeyboardProvider>
+        <GlassBackground />
+        <StatusBar style="light" />
+        <Stack
+          screenOptions={{ headerShown: false, contentStyle: { backgroundColor: 'transparent' } }}
+        >
+          <Stack.Screen name="(tabs)" />
+          {['expense', 'category', 'tag'].map((name) => (
+            <Stack.Screen key={name} name={name} options={sheetOptions} />
+          ))}
+        </Stack>
+        <Snackbar />
+      </KeyboardProvider>
     </GestureHandlerRootView>
   );
 }

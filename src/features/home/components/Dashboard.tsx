@@ -29,7 +29,7 @@ export function Dashboard() {
   const [month] = useState(() => new Date());
   const currency = useSettings((s) => s.currency);
   const decimals = useActiveCurrency()?.decimals ?? 0;
-  const categories = useCategories();
+  const categories = useCategories({ includeArchived: true });
   const budgets = useBudgets(currency);
   const { byCategory, previousTotal } = useMonthOverview(currency, month);
   const recent = useExpenseList(currency, null, RECENT_COUNT);

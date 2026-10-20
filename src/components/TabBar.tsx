@@ -34,7 +34,7 @@ export function TabBar({ blurTarget }: Props) {
   ];
 
   const renderTab = ({ href, label, Icon }: Tab) => {
-    const active = pathname === href;
+    const active = pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
     const color = active ? colors.textActive : colors.textMuted;
     return (
       <Pressable

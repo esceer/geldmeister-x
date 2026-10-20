@@ -29,7 +29,7 @@ export function Reports() {
   const { t, i18n } = useTranslation();
   const currency = useSettings((s) => s.currency);
   const decimals = useActiveCurrency()?.decimals ?? 0;
-  const categories = useCategories();
+  const categories = useCategories({ includeArchived: true });
 
   const [kind, setKind] = useState<Kind>('month');
   const [anchor, setAnchor] = useState(() => new Date());
