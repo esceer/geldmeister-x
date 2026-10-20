@@ -40,3 +40,7 @@ Accepted design. Dark-first, iOS-like frosted glass. Live canvas (clickable): ht
 - Font: Inter 400/500/600/700. Large amounts 40–52px bold, letter-spacing −0.03em
 - Spacing: screen padding 20, section gap 14–16, row height ~60, touch targets ≥ 40–44
 - Icons: stroke icons (Lucide style), 1.8 stroke width
+
+## App icon
+
+Dark Midnight Glass background with the three color blobs; a ring split into the three category colors (the dashboard donut) around a bold Inter "G". Source: `icon/make-icons.js` renders every icon asset in `assets/` (adaptive foreground/background/monochrome, iOS icon, splash, favicon).
