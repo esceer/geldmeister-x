@@ -14,6 +14,7 @@
     },
     "android": {
       "package": "com.esceer.geldmeisterx",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#0B0D17",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -35,7 +36,8 @@
         }
       ],
       "expo-sqlite",
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "./plugins/withReleaseSigning"
     ],
     "experiments": {
       "typedRoutes": true

@@ -67,18 +67,48 @@ Run `npx expo run:android` again only when you add or update a library with nati
 
 1. On the phone, enable **Developer options** (tap *Build number* seven times in *About phone*), then turn on **USB debugging**.
 2. Connect the phone by USB and accept the debugging prompt. `adb devices` should list it.
-3. Choose a build:
-   - **Development build** (needs Metro running on your computer):
-     ```sh
-     npx expo run:android --device
-     ```
-   - **Standalone build** (bundles the JavaScript and runs without your computer):
-     ```sh
-     npx expo run:android --variant release --device
-     ```
-     The APK is written to `android/app/build/outputs/apk/release/app-release.apk`, so you can also copy it to a phone and install it directly. It is signed with the debug key, which is fine for personal use. Publishing to Google Play needs a real upload key, or a build with EAS (`npx eas-cli build -p android`).
+3. Install a **development build** (needs Metro running on your computer):
+   ```sh
+   npx expo run:android --device
+   ```
 
 Your data lives in the app's local database. Uninstalling the app deletes it.
+
+## Release APK
+
+The release build bundles the JavaScript and runs without your computer. It is installed directly from the APK (sideloaded), not through Google Play.
+
+**Signing key (one-time).** Android only accepts an update signed with the same key as the installed app, so keep the key safe and backed up. Losing it means uninstalling, which deletes the data. Create a keystore outside the repo:
+
+```sh
+keytool -genkeypair -storetype PKCS12 -keystore ~/keystores/geldmeisterx-release.jks \
+  -alias geldmeisterx -keyalg RSA -keysize 4096 -validity 10000
+```
+
+Then add its details to `~/.gradle/gradle.properties`:
+
+```properties
+GELDMEISTERX_RELEASE_STORE_FILE=/Users/<you>/keystores/geldmeisterx-release.jks
+GELDMEISTERX_RELEASE_STORE_PASSWORD=...
+GELDMEISTERX_RELEASE_KEY_ALIAS=geldmeisterx
+GELDMEISTERX_RELEASE_KEY_PASSWORD=...
+```
+
+The config plugin `plugins/withReleaseSigning.js` wires these into the generated `android/` project on every prebuild.
+
+**Each release:**
+
+1. Increase `version` (for example `1.1.0`) and `android.versionCode` (by 1) in `app.json`. Android refuses an update with the same or a lower versionCode.
+2. Build:
+   ```sh
+   npm run build:apk
+   ```
+   This runs a clean prebuild and writes the APK to `android/app/build/outputs/apk/release/app-release.apk`. It is built for 64-bit ARM (`arm64-v8a`) only, which covers current phones.
+3. Install it. Updating over the installed app keeps your data.
+   - **Over USB:** `adb install -r android/app/build/outputs/apk/release/app-release.apk`
+   - **Without a cable:** copy the APK to the phone and open it. Allow "Install unknown apps" for the app you opened it from. If Play Protect warns that the app is unknown, choose to install anyway.
+
+The phone's automatic backup (Google One) includes the app's database.
 
 ## Scripts
 
@@ -86,6 +116,7 @@ Your data lives in the app's local database. Uninstalling the app deletes it.
 |---|---|
 | `npm run android` | Build and run the dev build (`expo run:android`) |
 | `npm start` | Start Metro (`expo start`) |
+| `npm run build:apk` | Build the signed release APK (see [Release APK](#release-apk)) |
 | `npm test` | Run the unit tests |
 | `npm run typecheck` | TypeScript check |
 | `npm run lint` | ESLint (Expo config + Prettier) |
@@ -105,6 +136,7 @@ src/
   lib/              Pure helpers: money, dates, periods, recurring schedules (unit tested)
   theme/            Design tokens
 assets/             App icon and splash images
+plugins/            Expo config plugins (release signing)
 docs/design/        Design reference: tokens, interaction rules, screen mockups, icon generator
 ```
 
