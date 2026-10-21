@@ -3,6 +3,7 @@ import { describe, expect, it } from '@jest/globals';
 import {
   applyKey,
   currencySymbol,
+  fitInput,
   formatAmount,
   formatInput,
   formatMoney,
@@ -62,6 +63,13 @@ describe('minor unit conversion', () => {
     expect(minorToInput(1250, 2)).toBe('12.5');
     expect(minorToInput(1200, 2)).toBe('12');
     expect(minorToInput(7, 2)).toBe('0.07');
+  });
+
+  it('fits input to another currency', () => {
+    expect(fitInput('12.55', 0)).toBe('12');
+    expect(fitInput('12.', 0)).toBe('12');
+    expect(fitInput('12.5', 2)).toBe('12.5');
+    expect(fitInput('1250', 2)).toBe('1250');
   });
 });
 

@@ -18,6 +18,14 @@ export function applyKey(input: string, key: KeypadKey, decimals: number): strin
   return integer.length < MAX_INTEGER_DIGITS ? input + key : input;
 }
 
+/** Keeps typed input valid for another currency by trimming extra fraction digits. */
+export function fitInput(input: string, decimals: number): string {
+  const [integer, fraction] = input.split('.');
+  return fraction === undefined || decimals === 0
+    ? integer
+    : `${integer}.${fraction.slice(0, decimals)}`;
+}
+
 export function inputToMinor(input: string, decimals: number): number {
   const [integer, fraction = ''] = input.split('.');
   return Number(integer || 0) * 10 ** decimals + Number(fraction.padEnd(decimals, '0') || 0);

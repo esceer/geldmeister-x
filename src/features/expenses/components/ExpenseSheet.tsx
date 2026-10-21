@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
+import { CurrencyChip } from '@/components/CurrencyChip';
 import { Button } from '@/components/ui/Button';
 import { CurrencyBadge } from '@/components/ui/CurrencyBadge';
 import { DateField } from '@/components/ui/DateField';
@@ -12,11 +13,12 @@ import { Sheet } from '@/components/ui/Sheet';
 import { showSnackbar } from '@/components/ui/Snackbar';
 import { TextField } from '@/components/ui/TextField';
 import { CategoryTagPicker } from '@/features/categories/components/CategoryTagPicker';
-import { useCategories } from '@/features/categories/hooks';
-import { getCurrency } from '@/features/currencies/hooks';
+import { useDefaultCategoryId } from '@/features/categories/hooks';
+import { CurrencyMenu } from '@/features/currencies/components/CurrencyMenu';
+import { getCurrency, useCurrencies } from '@/features/currencies/hooks';
 import { useSettings } from '@/features/settings/store';
 import { formatDate, toDateKey } from '@/lib/dates';
-import { applyKey, inputToMinor, minorToInput } from '@/lib/money';
+import { applyKey, fitInput, inputToMinor, minorToInput } from '@/lib/money';
 
 import { dayLabel } from '../dayLabel';
 import { deleteExpense, getExpense, restoreExpense, saveExpense } from '../queries';
@@ -29,12 +31,14 @@ type Props = { expenseId?: string };
 export function ExpenseSheet({ expenseId }: Props) {
   const { t, i18n } = useTranslation();
   const activeCurrency = useSettings((s) => s.currency);
-  const categories = useCategories();
+  const defaultCategoryId = useDefaultCategoryId();
+  const currencyCount = useCurrencies().length;
 
   const [existing] = useState(() => (expenseId ? getExpense(expenseId) : undefined));
-  // Editing keeps the expense's own currency.
-  const currency = existing?.currency ?? activeCurrency;
-  const [decimals] = useState(() => getCurrency(currency)?.decimals ?? 0);
+  // New expenses start in the active currency; editing keeps the expense's own.
+  const [currency, setCurrency] = useState(existing?.currency ?? activeCurrency);
+  const [pickingCurrency, setPickingCurrency] = useState(false);
+  const decimals = getCurrency(currency)?.decimals ?? 0;
 
   const [input, setInput] = useState(() =>
     existing ? minorToInput(existing.amount, decimals) : '',
@@ -46,7 +50,7 @@ export function ExpenseSheet({ expenseId }: Props) {
   const [date, setDate] = useState(existing?.date ?? toDateKey(new Date()));
   const [description, setDescription] = useState(existing?.description ?? '');
 
-  const categoryId = selection.categoryId ?? categories[0]?.id;
+  const categoryId = selection.categoryId ?? defaultCategoryId;
   const amount = inputToMinor(input, decimals);
   const canSave = amount > 0 && !!categoryId;
 
@@ -66,6 +70,12 @@ export function ExpenseSheet({ expenseId }: Props) {
     router.back();
   };
 
+  const selectCurrency = (code: string) => {
+    setCurrency(code);
+    setInput((value) => fitInput(value, getCurrency(code)?.decimals ?? 0));
+    setPickingCurrency(false);
+  };
+
   const remove = () => {
     if (!expenseId) return;
     deleteExpense(expenseId);
@@ -83,6 +93,8 @@ export function ExpenseSheet({ expenseId }: Props) {
       right={
         existing ? (
           <IconButton Icon={Trash2} label={t('expense.delete')} onPress={remove} variant="danger" />
+        ) : currencyCount > 1 ? (
+          <CurrencyChip code={currency} onPress={() => setPickingCurrency(true)} />
         ) : (
           <CurrencyBadge code={currency} />
         )
@@ -133,6 +145,14 @@ export function ExpenseSheet({ expenseId }: Props) {
         onPress={save}
         disabled={!canSave}
       />
+
+      {pickingCurrency ? (
+        <CurrencyMenu
+          value={currency}
+          onSelect={selectCurrency}
+          onClose={() => setPickingCurrency(false)}
+        />
+      ) : null}
     </Sheet>
   );
 }

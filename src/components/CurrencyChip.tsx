@@ -7,14 +7,17 @@ import { Text } from '@/components/ui/Text';
 import { useSettings } from '@/features/settings/store';
 import { colors } from '@/theme';
 
-/** Active currency chip in screen headers; opens the currency switcher. */
-export function CurrencyChip() {
+type Props = { code?: string; onPress?: () => void };
+
+/** Currency chip in headers; by default shows the active currency and opens the switcher. */
+export function CurrencyChip({ code, onPress }: Props) {
   const { t } = useTranslation();
-  const currency = useSettings((s) => s.currency);
+  const active = useSettings((s) => s.currency);
+  const currency = code ?? active;
 
   return (
     <Pressable
-      onPress={() => router.push('/currency')}
+      onPress={onPress ?? (() => router.push('/currency'))}
       accessibilityLabel={t('currencies.switch', { code: currency })}
       style={styles.chip}
     >

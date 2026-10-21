@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { Text } from '@/components/ui/Text';
 import { colors, radius } from '@/theme';
@@ -14,7 +14,7 @@ type Props = {
   onChange: (categoryId: string, tagIds: string[]) => void;
 };
 
-/** Category buttons plus the selected category's tags (multi-select, with inline add). */
+/** Category buttons plus the selected category's tags (one scrollable row, multi-select, inline add). */
 export function CategoryTagPicker({ categoryId, tagIds, onChange }: Props) {
   const categories = useCategories();
   const tags = useTags();
@@ -54,7 +54,13 @@ export function CategoryTagPicker({ categoryId, tagIds, onChange }: Props) {
       </View>
 
       {selected ? (
-        <View style={styles.wrap}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          style={styles.tagRow}
+          contentContainerStyle={styles.tagRowContent}
+        >
           {tags
             .filter((tag) => tag.categoryId === selected.id)
             .map((tag) => {
@@ -84,7 +90,7 @@ export function CategoryTagPicker({ categoryId, tagIds, onChange }: Props) {
           <AddTagChip
             onAdd={(name) => onChange(selected.id, [...tagIds, createTag(selected.id, name)])}
           />
-        </View>
+        </ScrollView>
       ) : null}
     </>
   );
@@ -106,6 +112,9 @@ const styles = StyleSheet.create({
     borderColor: colors.cardBorder,
     backgroundColor: colors.card,
   },
+  // Bleeds to the sheet edges so chips scroll out of view instead of being clipped.
+  tagRow: { flexGrow: 0, marginHorizontal: -20 },
+  tagRowContent: { gap: 8, paddingHorizontal: 20 },
   tag: {
     height: 32,
     paddingHorizontal: 12,

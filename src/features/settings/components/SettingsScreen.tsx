@@ -38,7 +38,7 @@ export function SettingsScreen() {
           color="#FFB547"
           label={t('currencies.title')}
           value={currencies.map((c) => c.code).join(', ')}
-          onPress={() => router.push('/currency')}
+          onPress={() => router.push('/settings/currencies')}
           divider
         />
         <SettingsRow

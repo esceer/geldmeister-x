@@ -157,8 +157,9 @@
   "categories": {
     "title": "Categories & tags",
     "new": "New category",
-    "hint": "Shared across all currencies. Drag to reorder. Tags belong to their category.",
+    "hint": "Shared across all currencies. Drag to reorder. The starred one is preselected for new expenses.",
     "reorder": "Drag to reorder",
+    "setDefault": "Make {{name}} the default",
     "edit": "Edit {{name}}",
     "tagCount_one": "{{count}} tag",
     "tagCount_other": "{{count}} tags",
@@ -190,7 +191,6 @@
     "title": "Currencies",
     "hint": "Each currency keeps its own expenses, budgets, recurring items and reports. Amounts are never converted.",
     "inMonth": "{{amount}} in {{month}}",
-    "add": "Add currency",
     "switch": "Switch currency, current {{code}}",
     "names": {
       "HUF": "Hungarian forint",

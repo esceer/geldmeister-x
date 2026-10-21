@@ -3,6 +3,7 @@ import { asc, isNull } from 'drizzle-orm';
 import { db } from '@/db/client';
 import { categories, tags } from '@/db/schema';
 import { useQuery } from '@/db/useQuery';
+import { useSettings } from '@/features/settings/store';
 
 /** Active categories in user order; `includeArchived` for looking up names of past expenses. */
 export function useCategories({ includeArchived = false } = {}) {
@@ -16,6 +17,13 @@ export function useCategories({ includeArchived = false } = {}) {
         .all(),
     ['categories'],
   );
+}
+
+/** The category preselected for new expenses: the chosen default, else the first one. */
+export function useDefaultCategoryId() {
+  const categories = useCategories();
+  const chosen = useSettings((s) => s.defaultCategoryId);
+  return categories.some((c) => c.id === chosen) ? chosen! : categories[0]?.id;
 }
 
 export function useTags() {

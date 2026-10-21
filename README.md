@@ -10,14 +10,14 @@ A personal expense tracker for Android. Log what you spend in seconds, sort it i
 
 ## Features
 
-- **Quick add.** Tap **+**, type the amount on the keypad, pick a category and tags, save. Date and description are optional.
+- **Quick add.** Tap **+**, type the amount on the keypad and save. Your default (starred) category is preselected; tags, currency, date and description are optional.
 - **Overview.** This month's total, the change versus last month, a category split and budget progress.
 - **Expenses list.** Grouped by day, with search and category filters. Tap to edit; swipe left to delete (with Undo).
 - **Reports.** Week, month, quarter, year or a custom range. Totals per category, expandable to tags, laid out so you can copy the numbers into a spreadsheet by hand.
 - **Categories and tags.** Fully customizable, with icons, colors and drag-to-reorder. Tags belong to a category (Transport → `fuel`, `parking`).
 - **Recurring expenses.** Monthly or yearly items (rent, subscriptions, insurance) are added automatically when due. Missed ones are caught up the next time you open the app.
 - **Budgets.** An optional monthly limit per category, with warnings when you go over.
-- **Multiple currencies.** Each currency has its own expenses, budgets and reports. Amounts are never converted or mixed.
+- **Multiple currencies.** Pick which ones you track in Settings. Each has its own expenses, budgets and reports; amounts are never converted or mixed.
 - **English and Hungarian.**
 
 ## Tech stack

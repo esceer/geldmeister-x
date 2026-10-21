@@ -7,6 +7,7 @@ Personal, local-only expense tracker (Expo SDK 58, React Native, TypeScript stri
 - Expenses only, no income.
 - Money is integer minor units plus a currency code; never floats. Decimals per currency (`currencies.decimals`: HUF 0, EUR 2).
 - Each currency is an isolated world: expenses, budgets, recurring items and reports are scoped to the active currency (`useSettings().currency`). Never sum or convert across currencies.
+- New expenses default to the active currency but can pick any tracked one. Hiding a currency in Settings sets its `deletedAt`; its data stays and returns when it's tracked again.
 - Categories are shared across currencies. Deleting one archives it (`deletedAt`): it leaves pickers, its budgets and recurring items stop, and past expenses keep it.
 - Tags belong to a category. An expense can have several tags, so tag totals may overlap.
 - Deletes are soft (`deletedAt`) with an Undo snackbar and no confirm dialog. Tag links (`expense_tags`) are soft-deleted too.

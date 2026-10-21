@@ -9,7 +9,7 @@ import { IconButton } from '@/components/ui/IconButton';
 import { ScreenHeader, useScreenContentStyle } from '@/components/ui/Screen';
 import { Text } from '@/components/ui/Text';
 
-import { useCategories, useTags } from '../hooks';
+import { useCategories, useDefaultCategoryId, useTags } from '../hooks';
 import { reorderCategories } from '../queries';
 import { CategoryCard } from './CategoryCard';
 
@@ -19,12 +19,13 @@ export function CategoriesScreen() {
   const contentStyle = useScreenContentStyle();
   const categories = useCategories();
   const tags = useTags();
+  const defaultId = useDefaultCategoryId();
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.fill}>
       <ReorderableList
         data={categories}
-        extraData={tags} // rows read tags from the closure
+        extraData={[tags, defaultId]} // rows read these from the closure
         keyExtractor={(category) => category.id}
         contentContainerStyle={contentStyle}
         keyboardShouldPersistTaps="handled"
@@ -51,7 +52,11 @@ export function CategoriesScreen() {
           </View>
         }
         renderItem={({ item }) => (
-          <CategoryCard category={item} tags={tags.filter((tag) => tag.categoryId === item.id)} />
+          <CategoryCard
+            category={item}
+            tags={tags.filter((tag) => tag.categoryId === item.id)}
+            isDefault={item.id === defaultId}
+          />
         )}
       />
     </KeyboardAvoidingView>

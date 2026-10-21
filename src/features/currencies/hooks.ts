@@ -31,7 +31,15 @@ export function useCurrencies() {
   );
 }
 
-export function addCurrency(code: string) {
+/** Hiding keeps the currency's data; tracking it again brings everything back. */
+export function setTracked(code: string, tracked: boolean) {
+  if (getCurrency(code)) {
+    db.update(currencies)
+      .set({ deletedAt: tracked ? null : new Date() })
+      .where(eq(currencies.code, code))
+      .run();
+    return;
+  }
   const last = db
     .select({ value: max(currencies.sortOrder) })
     .from(currencies)
