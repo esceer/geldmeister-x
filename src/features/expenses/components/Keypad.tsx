@@ -7,9 +7,9 @@ import { decimalSeparator, type KeypadKey } from '@/lib/money';
 import { colors } from '@/theme';
 
 const rows: KeypadKey[][] = [
-  ['1', '2', '3'],
-  ['4', '5', '6'],
   ['7', '8', '9'],
+  ['4', '5', '6'],
+  ['1', '2', '3'],
   ['.', '0', 'back'],
 ];
 
