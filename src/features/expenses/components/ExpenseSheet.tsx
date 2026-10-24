@@ -124,7 +124,6 @@ export function ExpenseSheet({ expenseId }: Props) {
           value={date}
           label={dayLabel(date, ', ', t, i18n.language)}
           onChange={setDate}
-          maximumDate={new Date()}
         />
         <TextField
           compact

@@ -1,8 +1,8 @@
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { subMonths } from 'date-fns';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { CurrencyChip } from '@/components/CurrencyChip';
 import { Card } from '@/components/ui/Card';
@@ -43,15 +43,21 @@ export function Dashboard() {
       subtitle={formatDate(month, t('dates.monthYear'), i18n.language)}
       right={<CurrencyChip />}
     >
-      <TotalCard
-        total={total}
-        previousTotal={previousTotal}
-        previousMonth={formatDate(subMonths(month, 1), 'LLL', i18n.language)}
-        budget={progress.budget}
-        budgetSpent={progress.spent}
-        currency={currency}
-        decimals={decimals}
-      />
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={t('expense.newTitle')}
+        onPress={() => router.push('/expense')}
+      >
+        <TotalCard
+          total={total}
+          previousTotal={previousTotal}
+          previousMonth={formatDate(subMonths(month, 1), 'LLL', i18n.language)}
+          budget={progress.budget}
+          budgetSpent={progress.spent}
+          currency={currency}
+          decimals={decimals}
+        />
+      </Pressable>
       <SplitCard
         categories={categories}
         totals={byCategory}
