@@ -1,8 +1,9 @@
 import { router } from 'expo-router';
 import { Repeat, Trash2 } from 'lucide-react-native';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, StyleSheet, View } from 'react-native';
-import Swipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
+import { Alert, Pressable, StyleSheet, View } from 'react-native';
+import Swipeable, { type SwipeableMethods } from 'react-native-gesture-handler/ReanimatedSwipeable';
 import Animated, { useAnimatedStyle, type SharedValue } from 'react-native-reanimated';
 
 import { showSnackbar } from '@/components/ui/Snackbar';
@@ -25,7 +26,7 @@ type Props = {
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-/** Tap to edit, swipe left to delete (with undo). */
+/** Tap to edit, swipe left to delete (after confirming, with undo). */
 export function ExpenseRow({ item, currency, decimals, divider, showDay }: Props) {
   const { t, i18n } = useTranslation();
   const title = item.tagNames ? capitalize(item.tagNames) : item.categoryName;
@@ -37,6 +38,9 @@ export function ExpenseRow({ item, currency, decimals, divider, showDay }: Props
     .filter(Boolean)
     .join(' · ');
 
+  const swipeable = useRef<SwipeableMethods>(null);
+  const close = () => swipeable.current?.close();
+
   const remove = () => {
     deleteExpense(item.id);
     showSnackbar(t('expense.deleted'), {
@@ -45,12 +49,24 @@ export function ExpenseRow({ item, currency, decimals, divider, showDay }: Props
     });
   };
 
+  const confirmRemove = () =>
+    Alert.alert(
+      t('expense.deleteTitle'),
+      t('expense.deleteMessage'),
+      [
+        { text: t('common.cancel'), style: 'cancel', onPress: close },
+        { text: t('common.delete'), style: 'destructive', onPress: remove },
+      ],
+      { cancelable: true, onDismiss: close },
+    );
+
   return (
     <Swipeable
+      ref={swipeable}
       friction={2}
       rightThreshold={80}
       overshootRight={false}
-      onSwipeableOpen={remove}
+      onSwipeableOpen={confirmRemove}
       renderRightActions={(progress) => <DeleteAction progress={progress} />}
     >
       <Pressable

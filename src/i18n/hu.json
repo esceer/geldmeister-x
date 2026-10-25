@@ -93,12 +93,15 @@
     "close": "Bezárás",
     "save": "Mentés",
     "cancel": "Mégse",
+    "delete": "Törlés",
     "back": "Vissza"
   },
   "expense": {
     "newTitle": "Új kiadás",
     "editTitle": "Kiadás szerkesztése",
     "delete": "Kiadás törlése",
+    "deleteTitle": "Törlöd ezt a kiadást?",
+    "deleteMessage": "Közvetlenül utána még visszavonhatod.",
     "deleteDigit": "Számjegy törlése",
     "save": "Kiadás mentése",
     "saveChanges": "Módosítások mentése",

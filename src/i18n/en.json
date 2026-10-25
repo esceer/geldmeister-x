@@ -93,12 +93,15 @@
     "close": "Close",
     "save": "Save",
     "cancel": "Cancel",
+    "delete": "Delete",
     "back": "Back"
   },
   "expense": {
     "newTitle": "New expense",
     "editTitle": "Edit expense",
     "delete": "Delete expense",
+    "deleteTitle": "Delete this expense?",
+    "deleteMessage": "You can still undo it right after.",
     "deleteDigit": "Delete digit",
     "save": "Save expense",
     "saveChanges": "Save changes",
