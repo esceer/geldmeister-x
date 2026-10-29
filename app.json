@@ -2,7 +2,7 @@
   "expo": {
     "name": "Geldmeister X",
     "slug": "geldmeister-x",
-    "version": "1.2.1",
+    "version": "1.3.0",
     "scheme": "geldmeisterx",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,7 +14,7 @@
     },
     "android": {
       "package": "com.esceer.geldmeisterx",
-      "versionCode": 5,
+      "versionCode": 6,
       "adaptiveIcon": {
         "backgroundColor": "#0B0D17",
         "foregroundImage": "./assets/android-icon-foreground.png",
