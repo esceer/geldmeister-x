@@ -8,8 +8,9 @@ const GAP = 4; // gap between segments, in px of arc
 
 type Props = { segments: { value: number; color: string }[]; size?: number; children?: ReactNode };
 
-/** Ring chart with a centered label. */
-export function Donut({ segments, size = 112, children }: Props) {
+/** Ring chart with a centered label; zero or negative segments (net refunds) are left out. */
+export function Donut({ segments: all, size = 112, children }: Props) {
+  const segments = all.filter((s) => s.value > 0);
   const total = segments.reduce((sum, s) => sum + s.value, 0);
   let offset = 0;
 

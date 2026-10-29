@@ -103,6 +103,7 @@
     "deleteTitle": "Törlöd ezt a kiadást?",
     "deleteMessage": "Közvetlenül utána még visszavonhatod.",
     "deleteDigit": "Számjegy törlése",
+    "toggleSignHint": "Hosszan nyomva negatív vagy pozitív lesz az összeg",
     "save": "Kiadás mentése",
     "saveChanges": "Módosítások mentése",
     "descriptionPlaceholder": "Leírás (nem kötelező)",
@@ -160,7 +161,7 @@
   "categories": {
     "title": "Kategóriák és címkék",
     "new": "Új kategória",
-    "hint": "Minden pénznemben közösek. Húzd az átrendezéshez. A csillagos kategória lesz előre kiválasztva új kiadásnál.",
+    "hint": "Minden pénznemben közösek. Húzd az átrendezéshez; a címkéket hosszan nyomva mozgathatod. A csillagos kategória lesz előre kiválasztva új kiadásnál.",
     "reorder": "Húzd az átrendezéshez",
     "setDefault": "{{name}} legyen az alapértelmezett",
     "edit": "{{name}} szerkesztése",

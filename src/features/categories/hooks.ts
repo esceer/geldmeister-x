@@ -26,9 +26,16 @@ export function useDefaultCategoryId() {
   return categories.some((c) => c.id === chosen) ? chosen! : categories[0]?.id;
 }
 
+/** Active tags in user order (tags not yet reordered keep their creation order). */
 export function useTags() {
   return useQuery(
-    () => db.select().from(tags).where(isNull(tags.deletedAt)).orderBy(asc(tags.createdAt)).all(),
+    () =>
+      db
+        .select()
+        .from(tags)
+        .where(isNull(tags.deletedAt))
+        .orderBy(asc(tags.sortOrder), asc(tags.createdAt))
+        .all(),
     ['tags'],
   );
 }

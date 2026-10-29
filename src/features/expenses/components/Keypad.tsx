@@ -14,9 +14,15 @@ const rows: KeypadKey[][] = [
 ];
 
 // Fills the remaining height unless `height` is given (sheets that size to their content).
-type Props = { decimals: number; onKey: (key: KeypadKey) => void; height?: number };
+// `onToggleSign` makes a long press on the decimal key flip the sign, even for 0-decimal currencies.
+type Props = {
+  decimals: number;
+  onKey: (key: KeypadKey) => void;
+  onToggleSign?: () => void;
+  height?: number;
+};
 
-export function Keypad({ decimals, onKey, height }: Props) {
+export function Keypad({ decimals, onKey, onToggleSign, height }: Props) {
   const { t, i18n } = useTranslation();
 
   return (
@@ -24,26 +30,34 @@ export function Keypad({ decimals, onKey, height }: Props) {
       {rows.map((row, i) => (
         <View key={i} style={styles.row}>
           {row.map((key) => {
-            const disabled = key === '.' && decimals === 0;
+            const noDecimals = key === '.' && decimals === 0;
+            const signKey = key === '.' && !!onToggleSign;
             return (
               <Pressable
                 key={key}
-                disabled={disabled}
+                disabled={noDecimals && !signKey}
                 accessibilityLabel={key === 'back' ? t('expense.deleteDigit') : undefined}
+                accessibilityHint={signKey ? t('expense.toggleSignHint') : undefined}
                 onPress={() => onKey(key)}
+                onLongPress={signKey ? onToggleSign : undefined}
                 style={({ pressed }) => [
                   styles.key,
                   pressed && styles.pressed,
-                  disabled && styles.disabled,
+                  noDecimals && !signKey && styles.disabled,
                 ]}
               >
                 {key === 'back' ? (
                   <Delete size={24} color={colors.text} strokeWidth={1.8} />
                 ) : (
-                  <Text size={24} weight="medium">
+                  <Text size={24} weight="medium" style={noDecimals && styles.disabled}>
                     {key === '.' ? decimalSeparator(i18n.language) : key}
                   </Text>
                 )}
+                {signKey ? (
+                  <Text size={13} weight="medium" muted style={styles.signHint}>
+                    ±
+                  </Text>
+                ) : null}
               </Pressable>
             );
           })}
@@ -65,4 +79,5 @@ const styles = StyleSheet.create({
   },
   pressed: { backgroundColor: 'rgba(255,255,255,0.14)' },
   disabled: { opacity: 0.3 },
+  signHint: { position: 'absolute', top: 6, right: 10 },
 });

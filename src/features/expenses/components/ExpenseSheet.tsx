@@ -40,8 +40,10 @@ export function ExpenseSheet({ expenseId }: Props) {
   const [pickingCurrency, setPickingCurrency] = useState(false);
   const decimals = getCurrency(currency)?.decimals ?? 0;
 
+  // Negative amounts are refunds or corrections; the sign is kept apart from the typed digits.
+  const [negative, setNegative] = useState(() => (existing?.amount ?? 0) < 0);
   const [input, setInput] = useState(() =>
-    existing ? minorToInput(existing.amount, decimals) : '',
+    existing ? minorToInput(Math.abs(existing.amount), decimals) : '',
   );
   const [selection, setSelection] = useState({
     categoryId: existing?.categoryId,
@@ -51,8 +53,8 @@ export function ExpenseSheet({ expenseId }: Props) {
   const [description, setDescription] = useState(existing?.description ?? '');
 
   const categoryId = selection.categoryId ?? defaultCategoryId;
-  const amount = inputToMinor(input, decimals);
-  const canSave = amount > 0 && !!categoryId;
+  const amount = inputToMinor(input, decimals) * (negative ? -1 : 1);
+  const canSave = amount !== 0 && !!categoryId;
 
   const save = () => {
     if (!canSave) return;
@@ -103,6 +105,7 @@ export function ExpenseSheet({ expenseId }: Props) {
       <AmountDisplay
         input={input}
         currency={currency}
+        negative={negative}
         caption={
           existing
             ? t('expense.added', {
@@ -137,6 +140,7 @@ export function ExpenseSheet({ expenseId }: Props) {
       <Keypad
         decimals={decimals}
         onKey={(key) => setInput((value) => applyKey(value, key, decimals))}
+        onToggleSign={() => setNegative((value) => !value)}
       />
 
       <Button

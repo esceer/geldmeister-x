@@ -5,10 +5,10 @@ import { Pressable, StyleSheet, TextInput } from 'react-native';
 import { Text } from '@/components/ui/Text';
 import { colors, fonts, radius } from '@/theme';
 
-type Props = { onAdd: (name: string) => void; height?: number };
+type Props = { onAdd: (name: string) => void; onFocus?: () => void; height?: number };
 
 /** Dashed "+ Tag" chip that turns into an inline input. */
-export function AddTagChip({ onAdd, height = 32 }: Props) {
+export function AddTagChip({ onAdd, onFocus, height = 32 }: Props) {
   const { t } = useTranslation();
   const [name, setName] = useState<string | null>(null);
   // Enter fires submit and then blur (with a stale `name`); add only once per edit.
@@ -43,6 +43,7 @@ export function AddTagChip({ onAdd, height = 32 }: Props) {
       autoCapitalize="none"
       value={name}
       onChangeText={setName}
+      onFocus={onFocus}
       onSubmitEditing={submit}
       onBlur={submit}
       placeholder={t('tags.placeholder')}

@@ -26,7 +26,8 @@ export function Sheet({ title, right, fullHeight, children }: Props) {
   const close = () => router.back();
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.root}>
+    // Full-height sheets keep their text fields above the keyboard; shrinking them would squash the keypad.
+    <KeyboardAvoidingView behavior="padding" enabled={!fullHeight} style={styles.root}>
       <Pressable
         style={StyleSheet.absoluteFill}
         onPress={close}

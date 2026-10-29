@@ -103,6 +103,7 @@
     "deleteTitle": "Delete this expense?",
     "deleteMessage": "You can still undo it right after.",
     "deleteDigit": "Delete digit",
+    "toggleSignHint": "Long-press to make the amount negative or positive",
     "save": "Save expense",
     "saveChanges": "Save changes",
     "descriptionPlaceholder": "Description (optional)",
@@ -160,7 +161,7 @@
   "categories": {
     "title": "Categories & tags",
     "new": "New category",
-    "hint": "Shared across all currencies. Drag to reorder. The starred one is preselected for new expenses.",
+    "hint": "Shared across all currencies. Drag to reorder; long-press a tag to move it. The starred one is preselected for new expenses.",
     "reorder": "Drag to reorder",
     "setDefault": "Make {{name}} the default",
     "edit": "Edit {{name}}",

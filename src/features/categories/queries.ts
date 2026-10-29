@@ -54,8 +54,23 @@ export function reorderCategories(orderedIds: string[]) {
 
 export function createTag(categoryId: string, name: string): string {
   const id = newId();
-  db.insert(tags).values({ id, categoryId, name: name.trim() }).run();
+  const last = db
+    .select({ value: max(tags.sortOrder) })
+    .from(tags)
+    .where(and(eq(tags.categoryId, categoryId), isNull(tags.deletedAt)))
+    .get();
+  db.insert(tags)
+    .values({ id, categoryId, name: name.trim(), sortOrder: (last?.value ?? -1) + 1 })
+    .run();
   return id;
+}
+
+export function reorderTags(orderedIds: string[]) {
+  db.transaction((tx) => {
+    orderedIds.forEach((id, index) => {
+      tx.update(tags).set({ sortOrder: index }).where(eq(tags.id, id)).run();
+    });
+  });
 }
 
 export function getTag(id: string) {

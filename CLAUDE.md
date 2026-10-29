@@ -4,12 +4,12 @@ Personal, local-only expense tracker (Expo SDK 58, React Native, TypeScript stri
 
 ## Domain rules
 
-- Expenses only, no income.
+- Expenses only, no income. A single expense may be negative (refund or correction; long-press the keypad's decimal key); recurring items stay positive. Totals net them; charts (donut/split) skip categories netting to zero or less.
 - Money is integer minor units plus a currency code; never floats. Decimals per currency (`currencies.decimals`: HUF 0, EUR 2).
 - Each currency is an isolated world: expenses, budgets, recurring items and reports are scoped to the active currency (`useSettings().currency`). Never sum or convert across currencies.
 - New expenses default to the active currency but can pick any tracked one. Hiding a currency in Settings sets its `deletedAt`; its data stays and returns when it's tracked again.
 - Categories are shared across currencies. Deleting one archives it (`deletedAt`): it leaves pickers, its budgets and recurring items stop, and past expenses keep it.
-- Tags belong to a category. An expense can have several tags, so tag totals may overlap.
+- Tags belong to a category and are ordered by `sortOrder` (drag in Settings → Categories). An expense can have several tags, so tag totals may overlap.
 - Deletes are soft (`deletedAt`) with an Undo snackbar and no confirm dialog, except swipe-to-delete on expense rows, which asks first. Tag links (`expense_tags`) are soft-deleted too.
 - Editing an expense never changes its currency. Editing a recurring item affects future occurrences only.
 - Recurring occurrences are counted from `startDate` (the 31st clamps to short months without drifting) and generated on app start and on return to foreground, catching up missed ones.

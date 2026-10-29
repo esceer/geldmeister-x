@@ -4,15 +4,16 @@ import { StyleSheet, View } from 'react-native';
 import { Text } from '@/components/ui/Text';
 import { currencySymbol, formatInput } from '@/lib/money';
 
-type Props = { input: string; currency: string; caption?: string };
+type Props = { input: string; currency: string; negative?: boolean; caption?: string };
 
 /** Large keypad amount with the currency symbol. */
-export function AmountDisplay({ input, currency, caption }: Props) {
+export function AmountDisplay({ input, currency, negative, caption }: Props) {
   const { i18n } = useTranslation();
   return (
     <View style={styles.amount}>
       <View style={styles.row}>
         <Text size={52} weight="bold" style={styles.value} numberOfLines={1} adjustsFontSizeToFit>
+          {negative ? '−' : ''}
           {formatInput(input, i18n.language)}
         </Text>
         <Text size={22} weight="semibold" muted>

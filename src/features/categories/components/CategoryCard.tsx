@@ -14,10 +14,11 @@ import { colors } from '@/theme';
 import { CategoryIcon, tint } from '../icons';
 import { createTag } from '../queries';
 import { AddTagChip } from './AddTagChip';
+import { TagChips } from './TagChips';
 
 type Props = { category: Category; tags: Tag[]; isDefault: boolean };
 
-/** Category with its tags; drag the handle to reorder, star it as the default, tap a tag to rename or delete it. */
+/** Category with its tags; drag the handle to reorder, star it as the default, tap a tag to rename or delete it, long-press a tag to drag it. */
 export function CategoryCard({ category, tags, isDefault }: Props) {
   const { t } = useTranslation();
   const drag = useReorderableDrag();
@@ -60,20 +61,9 @@ export function CategoryCard({ category, tags, isDefault }: Props) {
           onPress={() => router.push({ pathname: '/category', params: { id: category.id } })}
         />
       </View>
-      <View style={styles.tags}>
-        {tags.map((tag) => (
-          <Pressable
-            key={tag.id}
-            onPress={() => router.push({ pathname: '/tag', params: { id: tag.id } })}
-            style={[styles.tag, { backgroundColor: tint(category.color, 0.14) }]}
-          >
-            <Text size={13} style={{ color: category.color }}>
-              # {tag.name}
-            </Text>
-          </Pressable>
-        ))}
+      <TagChips tags={tags} color={category.color}>
         <AddTagChip height={30} onAdd={(name) => createTag(category.id, name)} />
-      </View>
+      </TagChips>
     </Card>
   );
 }
@@ -84,6 +74,4 @@ const styles = StyleSheet.create({
   icon: { width: 40, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
   texts: { flex: 1, gap: 2 },
   star: { width: 32, height: 40, alignItems: 'center', justifyContent: 'center' },
-  tags: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
-  tag: { height: 30, paddingHorizontal: 10, borderRadius: 15, justifyContent: 'center' },
 });

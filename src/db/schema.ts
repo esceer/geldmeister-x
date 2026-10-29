@@ -48,6 +48,7 @@ export const tags = sqliteTable(
       .notNull()
       .references(() => categories.id),
     name: text('name').notNull(),
+    sortOrder: integer('sort_order').notNull().default(0),
     ...timestamps,
   },
   (t) => [index('tags_category_idx').on(t.categoryId)],

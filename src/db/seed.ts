@@ -40,10 +40,11 @@ export function seedIfEmpty() {
         .run();
       tx.insert(tags)
         .values(
-          category.tags.map((tag) => ({
+          category.tags.map((tag, tagIndex) => ({
             id: newId(),
             categoryId,
             name: i18n.t(`seed.${category.key}.tags.${tag}`),
+            sortOrder: tagIndex,
           })),
         )
         .run();

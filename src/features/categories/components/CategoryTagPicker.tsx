@@ -1,3 +1,4 @@
+import { useRef, type ComponentRef } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { Text } from '@/components/ui/Text';
@@ -19,6 +20,7 @@ export function CategoryTagPicker({ categoryId, tagIds, onChange }: Props) {
   const categories = useCategories();
   const tags = useTags();
   const selected = categories.find((c) => c.id === categoryId);
+  const tagRow = useRef<ComponentRef<typeof ScrollView>>(null);
 
   return (
     <>
@@ -55,6 +57,7 @@ export function CategoryTagPicker({ categoryId, tagIds, onChange }: Props) {
 
       {selected ? (
         <ScrollView
+          ref={tagRow}
           horizontal
           showsHorizontalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
@@ -88,6 +91,8 @@ export function CategoryTagPicker({ categoryId, tagIds, onChange }: Props) {
               );
             })}
           <AddTagChip
+            // The input sits at the end of the row; bring it into view.
+            onFocus={() => tagRow.current?.scrollToEnd()}
             onAdd={(name) => onChange(selected.id, [...tagIds, createTag(selected.id, name)])}
           />
         </ScrollView>

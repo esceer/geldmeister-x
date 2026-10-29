@@ -26,7 +26,8 @@ export function SplitCard({ categories, totals, budgets, decimals }: Props) {
       budget: budgets.get(category.id),
     }))
     .filter((row) => row.total > 0 || (row.budget && !row.category.deletedAt));
-  const total = rows.reduce((sum, row) => sum + row.total, 0);
+  // Matches the donut, which leaves out categories netting to zero or less.
+  const total = rows.reduce((sum, row) => sum + Math.max(row.total, 0), 0);
   const top = rows.reduce<(typeof rows)[number] | undefined>(
     (best, row) => (!best || row.total > best.total ? row : best),
     undefined,
